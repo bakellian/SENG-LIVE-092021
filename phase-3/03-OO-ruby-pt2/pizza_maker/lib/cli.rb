@@ -41,7 +41,7 @@ def create_pizza
   puts "Describe this pizza: "
   desc = gets.strip 
 
-  pizza = Pizza.new(name, toppings, desc)
+  pizza = Pizza.new(name: name, toppings: toppings, desc: desc)
   PIZZAS << pizza 
   pizza
 end 
