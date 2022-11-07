@@ -10,7 +10,7 @@
 - [x] Refactor initialize method to use keyword arguments
 - [x] Add a new property `id` to donation instances that will increment by 1 every time a new instance is created 
 - [x] Create a class method `.find_by_id` that accepts an `id` as an argument. The method will find the instance with the given `id`. After a new instance has been created, the `id` can not change
-- [ ] Define a method `.pending` that will return all donations with a completed status of false
+- [x] Define a method `.pending` that will return all donations with a completed status of false
 - [ ] BONUS: create a `.complete` method that will update completed status to true if donation was made 2 days ago
 
 ### Lecture Take Aways

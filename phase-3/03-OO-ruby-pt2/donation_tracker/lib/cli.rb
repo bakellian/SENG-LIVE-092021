@@ -1,5 +1,4 @@
 ORGANIZATIONS = ["Feeding America", "American Red Cross", "American Humane"]
-DONATIONS = [] 
 
 def init 
   greeting 
@@ -16,6 +15,7 @@ def menu_list
   puts "Please select from the following options: "
   puts " Enter '1' to create a new donation!"
   puts " Enter '2' to see a list of the organizations accepting donations"
+  puts " Enter 'search' if you want to search for a donation by id"
   puts " Enter 'exit' if you changed your mind and wish to leave the app"
   puts " To see the menu options again, please enter 'menu'"
 end 
@@ -25,10 +25,11 @@ def menu_selection
   until input == 'exit'
     if input.to_i == 1  
       donation = create_donation 
-      DONATIONS << donation
       donation.read_donation 
     elsif input.to_i == 2 
       organizations
+    elsif input == 'search'
+      find_donation_by_id
     elsif input == 'menu'
       menu_list
     elsif input == 'pry'
@@ -38,6 +39,13 @@ def menu_selection
     end
     input = gets.strip
   end 
+end
+
+def find_donation_by_id
+  puts "enter an id number"
+  id = gets.strip.to_i
+  dontation = Donation.find_by_id(id)
+  dontation.read_donation #to pront to the terminal
 end
 
 def organizations 
@@ -57,10 +65,17 @@ def create_donation
   date = DateTime.now.strftime('%m/%d/%y')
   completed = false
 
-  donation = Donation.new(organization, amount, date, completed)
+  #changed to accedpt key/value pairs. Allows more flexibilty - could change up order
+  Donation.create(
+    organization: organization, 
+    amount: amount, 
+    date: date, 
+    completed: completed
+  )
+  
 end 
 
 
-  def goodbye
-    puts "Thank you for your contributions! We hope to see you back soon"
-  end
+def goodbye
+  puts "Thank you for your contributions! We hope to see you back soon"
+end
