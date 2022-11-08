@@ -147,6 +147,24 @@ Currently we are building an app that will allow a donor to make a donation to a
 
 1. What models do we need?
     - Donation 
+    - Organization
+    - Donor 
 2. What are the associations between the models?
+    - Donation: belongs_to :donor, belongs_to :organization (Join Table)
+    - Organization: has_many donations | has_many, :donations through :donors 
+    - Donor: has_many donations | has_many, :organizations through :donations 
 3. What columns and types will each models respective table need?
+    - donations 
+        1. ammount: integer 
+        2. date: datetime
+        3. organization_id: integer 
+        4. dontion_id
+        5. completed: boolean
+    - organizations 
+        1. name: string 
+        2. email: string 
+    - donors
+        1. name: string 
 4. What behaviors would we like to provide to each model? 
+    - organizations: total ammount raised 
+    - donor: return all orgs donated to 
