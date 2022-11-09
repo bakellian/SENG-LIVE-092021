@@ -1,5 +1,18 @@
 class Donation < ActiveRecord::Base #inheriting from the library and use base module - giving donation model access to all active record methods
 
+    #use singular for belongs to 
+    belongs_to :donor
+    belongs_to :organization    
+
+    def self.pending
+        @@all.filter do |donation|
+            donation.completed == false
+        end
+    end
+    
+    
+    #commenting out these methods because Active Record provides up with them. 
+
     # @@all = [] 
 
     # attr_accessor :amount, :organization, :date, :completed
@@ -24,12 +37,6 @@ class Donation < ActiveRecord::Base #inheriting from the library and use base mo
     # def self.find_by_id(id)
     #     @@all.find do |donation|
     #         donation.id == id
-    #     end
-    # end
-
-    # def self.pending
-    #     @@all.filter do |donation|
-    #         donation.completed == false
     #     end
     # end
 
