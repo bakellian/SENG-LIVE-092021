@@ -19,8 +19,16 @@ Before getting started on the deliverables, seed the data in the `seeds.rb` file
 ### Deliverables:
 
 1. Define a method `Pizza#pizza_toppings` that will return all pizza toppings associated with a specific pizza record. 
+    - belongs in the Pizza model 
+    - instnce method called pizza_toppings
+    - defined using the macro has_many :pizza_toppings
+
 2. Define a method `Pizza#toppings` that will return all toppings associated with a specific pizza record. 
+    - defined with has_many :toppings, through: :pizza_toppings
+
 3. Define a method `PizzaTopping#pizza` that will return the pizza a pizza topping belongs to.
+    - defined through belongs_to :pizza
+    - defined through belongs_to :topping 
 4. Define a method `PizzaTopping#topping` that will return the topping a pizza topping belongs to.
 5. Define a method `Topping#pizza_toppings` that will return all pizza toppings associated with a specific topping record
 5. Define a method `Topping#pizzas` that will return all pizzas associated with a specific topping record
